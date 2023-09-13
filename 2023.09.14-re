@@ -1,0 +1,81 @@
+
+document.getElementsByTagName("input")[1].style.backgroundColor="#000000";
+document.getElementsByTagName("input")[1].style.color="#fff";
+
+
+    
+const Monogram = (nev) => nev.split(' ').map((szo)=>szo[0]).join("");
+function Nev() {
+    const colorChangeInterval =250;
+    var Random = (also,felso) => Math.floor(Math.random() * (felso - also + 1)) + also;
+    const nev = document.getElementById("nev").value;
+    const hely = document.getElementById("ala");
+    while (hely.firstChild) {
+        hely.removeChild(hely.firstChild);
+    }
+
+    const updateColors = () => {
+        const coloredLetters = [...hely.querySelectorAll("span")];
+        coloredLetters.forEach(letter => {
+            letter.style.color = getRandomColor();
+        });
+    };
+
+    const addLetter = (letterIndex) => {
+        if (letterIndex < nev.length) {
+            const letter = nev[letterIndex];
+            const coloredLetter = document.createElement("span");
+            coloredLetter.textContent = letter;
+            hely.appendChild(coloredLetter);
+            letterIndex++;
+            updateColors();
+            setTimeout(() => addLetter(letterIndex), colorChangeInterval);
+        }
+    };
+
+    const getRandomColor = () => {
+        let color = "";
+        color = "rgb("+Random(0,255)+","+Random(0,255)+","+Random(0,255)+")";
+        console.log(color);
+        return color;
+    };
+
+    const startTypingAnimation = () => {
+        addLetter(0);
+        setInterval(updateColors, colorChangeInterval); 
+    };
+
+    startTypingAnimation();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+var i =0;
+var nev = document.getElementById("nev").value;
+var idozito = setInterval(gepel(nev),250);
+function gepel()
+{
+    var hely = document.getElementById("ala").innerHTML +=nev[i];
+    i++;
+    if(i == nev.length)
+    {
+        clearInterval(idozito);
+    }
+}
+*/
+
+
+
+
+
+

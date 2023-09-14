@@ -1,0 +1,152 @@
+html:
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="alap.css">
+    <script src="alap.js" defer></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="idozito"></div>
+    <br><br>
+    <div id="hely"></div>
+    <div id="kezelok">
+        <input type="text" placeholder="Max 50" id="db">
+        <input type="text" placeholder="Max 10" id="fele">
+        <input type="button" value="ok" id="gomb" onclick="start()">
+        <input type="button" value="reset" id="reset_gomb" onclick="reset()">
+    </div>
+</body>
+</html>
+css:
+span
+{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+:root
+{
+    background-color: rgb(31, 29, 27);
+}
+#hely
+{
+    background-color: black;
+    height: auto;
+    width: 50%;
+    padding: 20px;
+    border: 2px solid grey;
+    margin: auto;
+}
+
+#idozito
+{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    color: white;
+    font-size: 30px;
+}
+
+#kezelok
+{
+    position: absolute; bottom: 30px;
+}
+#db
+{
+    height: 60px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: 2px solid grey;
+
+}
+#fele
+{
+    height: 60px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: 2px solid grey;
+}
+#gomb
+{
+    height: 66px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: 2px solid grey;
+}
+#reset_gomb
+{
+    height: 66px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border: 2px solid grey;
+}
+js:
+var tomb = ["blue","purple","green","red","yellow","orange","pink","lightblue","grey","aqua"];
+var magyartomb = ["kék", "lila", "zöld", "piros", "sárga", "narancssárga", "rózsaszín", "világoskék", "szürke", "aqua"];
+var hely = document.getElementById("hely");
+
+function start(){
+    var db = document.getElementById("db").value;
+    var fele = document.getElementById("fele").value;
+    if(db <= 50 && fele <= 10)
+    {
+        //Itt lehet valtoztatni az idon
+    var idozito = db/2*1500;
+    var stopper = document.createElement("p");
+    stopper.id = "stopper";
+    stopper.innerHTML = Math.floor(idozito/1000)+" mp";
+    var idozitohelye = document.getElementById("idozito");
+    idozitohelye.appendChild(stopper);
+    ora(idozito);
+    console.log(random(1,10));
+    for(var i = 0; i<db; i++){
+        var szinek = random(0,fele-1);
+        let szin = tomb[szinek];
+        var span = document.createElement("span");
+        span.innerHTML += " "+magyartomb[random(0,tomb.length-1)]+" ";
+        span.style.color = szin;
+        hely.appendChild(span);
+    }
+    setTimeout(function() {
+        var spans = document.getElementsByTagName("span");
+        for (var i = db-1; i >=0; i--) {
+            spans[i].remove();
+        }
+    }, idozito);
+    }
+    else
+    {
+        alert("valid értéket adj meg");
+    }
+}
+function random(also,felso){
+    return Math.floor(Math.random()*(felso-also+1)+also);
+}
+
+function ora(idozito){
+    var ido = Math.floor(idozito /1000);
+    var idozitohelye = document.getElementById("stopper");
+    setInterval(function()  {
+        if(ido > 0){
+            idozitohelye.innerHTML = ido-1+" mp";
+            console.log(ido);
+            ido--;
+        }
+        if(ido === 0){
+            idozitohelye.remove();
+        }
+    },1000);
+}
+
+function reset()
+{
+    location.reload();
+}

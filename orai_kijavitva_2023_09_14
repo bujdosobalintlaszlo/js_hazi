@@ -110,8 +110,6 @@ function start(){
     stopper.innerHTML = Math.floor(idozito/1000)+" mp";
     var idozitohelye = document.getElementById("idozito");
     idozitohelye.appendChild(stopper);
-    ora(idozito);
-    console.log(random(1,10));
     for(var i = 0; i<db; i++){
         var szinek = random(0,fele-1);
         let szin = tomb[szinek];
@@ -132,9 +130,7 @@ function start(){
         alert("valid értéket adj meg");
     }
 }
-function random(also,felso){
-    return Math.floor(Math.random()*(felso-also+1)+also);
-}
+var random = (also,felso) => Math.floor(Math.random()*(felso-also+1)+also);
 
 function ora(idozito){
     var ido = Math.floor(idozito /1000);
@@ -142,7 +138,6 @@ function ora(idozito){
     setInterval(function()  {
         if(ido > 0){
             idozitohelye.innerHTML = ido-1+" mp";
-            console.log(ido);
             ido--;
         }
         if(ido === 0){

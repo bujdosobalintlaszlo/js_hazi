@@ -40,6 +40,8 @@ span
     padding: 20px;
     border: 2px solid grey;
     margin: auto;
+    border-radius: 10px;
+    
 }
 
 #idozito
@@ -62,6 +64,7 @@ span
     color: white;
     text-align: center;
     border: 2px solid grey;
+    border-radius: 10px 0px 0px 10px ;
 
 }
 #fele
@@ -87,7 +90,9 @@ span
     color: white;
     text-align: center;
     border: 2px solid grey;
+    border-radius: 0px 10px 10px 0px ;
 }
+
 js:
 var tomb = ["blue","purple","green","red","yellow","orange","pink","lightblue","grey","aqua"];
 var magyartomb = ["kék", "lila", "zöld", "piros", "sárga", "narancssárga", "rózsaszín", "világoskék", "szürke", "aqua"];

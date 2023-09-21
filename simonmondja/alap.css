@@ -1,0 +1,44 @@
+.szin
+{
+    border: 3px solid black;
+    height: 180px;
+    
+}
+
+.row {
+    width: 400px;
+}
+
+body
+{
+    background:url(./simon-mondja-otletek.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#zold
+{
+    border-radius: 180px 0px 0px 0px;
+    /* width: 100px; */
+}
+#sarga
+{
+    border-radius: 0px 0px 0px 180px;
+    /* width: 100px; */
+}
+#kek
+{
+    border-radius: 0px 0px 180px 0px;
+    /* width: 100px; */
+}
+#piros
+{
+    border-radius: 0px 180px 0px 0px;
+    /* width: 100px; */
+}
+
+#fo
+{
+    margin-left: auto;
+    margin-right: auto;
+}

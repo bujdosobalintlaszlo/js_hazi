@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./simon.ico" type="image/x-icon">
+    <title>Simon játék</title>
+    <link rel="stylesheet" href="alap.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="alap.js" defer></script>
+</head>
+<body>
+    <input type="button" value="Start" onclick="Start()" id="start">
+    <input type="button" value="Reset" onclick="Reset()">
+    <br><br><br><br>
+    <div id="stopper"></div>
+    <div id="adatok" class="text-center"></div>
+    <br><br><br><br>
+    <div class="container text-center">
+        <div class="row" id="fo">
+          <div id="zold" class="col-6 szin" data-szin="zold" onclick="Kattintas('zold')"></div>
+          <div id="piros" class="col-6 szin" data-szin="piros" onclick="Kattintas('piros')"></div>
+          <div id="sarga" class="col-6 szin" data-szin="sarga" onclick="Kattintas('sarga')"></div>
+          <div id="kek" class="col-6 szin" data-szin="kek" onclick="Kattintas('kek')"></div>
+        </div>
+      </div>
+</body>
+</html>

@@ -51,9 +51,7 @@
             }
         });
 
-        function Random(also, felso) {
-            return Math.floor(Math.random() * (felso - also + 1) + also);
-        }
+         var Random = (also, felso) => Math.floor(Math.random() * (felso - also + 1) + also);
 
         function KiGen()
         {

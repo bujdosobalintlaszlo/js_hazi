@@ -18,18 +18,28 @@
                     wordList = wordList.concat(verseWords);
                 });
 
-                for (var i = 1; i < 11; i++) {
-                    var randomWordIndex;
-                    var selectedWord;
-                
+                var randomIndices = [];
+                for (var i = 0; i < 10; i++) {
+                    var randomIndex;
                     do {
-                        randomWordIndex = Random(0, wordList.length - 1);
-                        selectedWord = wordList[randomWordIndex];
-                    } while (selectedWord.includes(".") || selectedWord === "");
-                    
+                        randomIndex = Math.floor(Math.random() * wordList.length);
+                    } while (randomIndices.includes(randomIndex) || wordList[randomIndex].includes(".") || wordList[randomIndex] === "");
+                    randomIndices.push(randomIndex);
+                }
+
+                randomIndices.sort(function(a, b) {
+                    return a - b;
+                });
+
+                
+                for (var i = 0; i < randomIndices.length; i++) {
+                    var selectedWord = wordList[randomIndices[i]];
                     jo.push(selectedWord);
-                    console.log(jo);
-                    wordList[randomWordIndex] = (i).toString();
+                    wordList[randomIndices[i]] = (i + 1).toString(); 
+                }
+
+                for (var i = 0; i < jo.length; i++) {
+                    console.log(jo[i]);
                 }
                 
                 var newHTML = "";
@@ -51,7 +61,7 @@
             }
         });
 
-         var Random = (also, felso) => Math.floor(Math.random() * (felso - also + 1) + also);
+        var Random = (also, felso) => Math.floor(Math.random() * (felso - also + 1) + also);
 
         function KiGen()
         {
@@ -86,7 +96,6 @@
                 {
                     let eredmeny = document.getElementById(j);
                     eredmeny.style.border= "2px solid red";
-                    //eredmeny.placeholder= jo[j];
                     eredmeny.style.color="red";
                     eredmeny.value = jo[j];
                 }
@@ -95,6 +104,7 @@
         }
         function Disable()
         {
+            
             for(let j =0; j < jo.length;j++)
             {
                 let eredmeny = document.getElementById(j);

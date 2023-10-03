@@ -1,43 +1,44 @@
-        var fileInput = document.getElementById("fajl");
+        var fajl = document.getElementById("fajl");
         var output = document.getElementById("output");
         var valaszok = [];
         var jo;
         var sorrend = [];
-        fileInput.addEventListener('change', () => {
+
+        fajl.addEventListener('change', () => {
             let fr = new FileReader();
-            fr.readAsText(fileInput.files[0]);
+            fr.readAsText(fajl.files[0]);
 
             fr.onload = function () {
-                originalText = fr.result;
-                var verses = originalText.split("\n");
-                var wordList = [];
+                eredeti = fr.result;
+                var verses = eredeti.split("\n");
+                var szolista = [];
                 jo = [];
 
                 verses.forEach(function (verse) {
-                    var verseWords = verse.split(/\s+/);
-                    wordList = wordList.concat(verseWords);
+                    var vers = verse.split(/\s+/);
+                    szolista = szolista.concat(vers);
                 });
-
-                var randomIndices = [];
+                //----------------------------------------------
+                var randomIndexek = [];
                 for (var i = 0; i < 10; i++) {
                     var randomIndex;
                     do {
-                        randomIndex = Math.floor(Math.random() * wordList.length);
-                    } while (randomIndices.includes(randomIndex) || wordList[randomIndex].includes(".") || wordList[randomIndex] === "");
-                    randomIndices.push(randomIndex);
+                        randomIndex = Math.floor(Math.random() * szolista.length);
+                    } while (randomIndexek.includes(randomIndex) || szolista[randomIndex].includes(".") || szolista[randomIndex] === "");
+                    randomIndexek.push(randomIndex);
                 }
 
-                randomIndices.sort(function(a, b) {
+                randomIndexek.sort(function(a, b) {
                     return a - b;
                 });
 
                 
-                for (var i = 0; i < randomIndices.length; i++) {
-                    var selectedWord = wordList[randomIndices[i]];
+                for (var i = 0; i < randomIndexek.length; i++) {
+                    var selectedWord = szolista[randomIndexek[i]];
                     jo.push(selectedWord);
-                    wordList[randomIndices[i]] = (i + 1).toString(); 
+                    szolista[randomIndexek[i]] = (i + 1).toString(); 
                 }
-
+                //-------------------------------------------------
                 for (var i = 0; i < jo.length; i++) {
                     console.log(jo[i]);
                 }
@@ -45,10 +46,10 @@
                 var newHTML = "";
 
                 verses.forEach(function (verse) {
-                    var verseWords = verse.split(/\s+/);
+                    var vers = verse.split(/\s+/);
 
-                    verseWords.forEach(function (word) {
-                        newHTML += wordList.shift() + " ";
+                    vers.forEach(function (word) {
+                        newHTML += szolista.shift() + " ";
                     });
 
                     newHTML = newHTML.trim() + '<br>';
